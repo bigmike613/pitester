@@ -7,7 +7,9 @@ import _thread as thread
 import signal
 import sys
 
+#edit this list to add or remove pins to be monitored
 pinlist = {"Pressure Switch":14, "Rollout 1":15, "Rollout 2":18, "Rollout 3":23, "High Limit":24}
+
 def createworkinglist(startlist):
     global workinglist
     for name, num in startlist.items():
