@@ -6,6 +6,7 @@ import _thread as thread
 import signal
 import sys
 
+pinlist = [14, 15, 18]
 port = 80
 directory="web"
 httpd = None
@@ -68,7 +69,7 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, stop_server)
     thread.start_new_thread(start_server, ())
     GPIO.setmode (GPIO.BCM)
-    pinlist = [14, 15]
+    
     for pin in pinlist:
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
