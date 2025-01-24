@@ -1,31 +1,16 @@
 import RPi.GPIO as GPIO
 import time
-from http.server import BaseHTTPRequestHandler, HTTPServer
+import http.server
+import socketserver
 
 hostname = "pitester"
-serverport = 80
-class TestServer(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
-        self.end_headers()
-        self.wfile.write(bytes("<html><head><title>https://pythonbasics.org</title></head>", "utf-8"))
-        self.wfile.write(bytes("<p>Request: %s</p>" % self.path, "utf-8"))
-        self.wfile.write(bytes("<body>", "utf-8"))
-        self.wfile.write(bytes("<p>This is an example web server.</p>", "utf-8"))
-        self.wfile.write(bytes("</body></html>", "utf-8"))
+port = 80
+Handler = http.server.SimpleHTTPRequestHandler
 
 if __name__ == "__main__":
-    webServer = HTTPServer((hostname, serverport), TestServer)
-    print("Server started http://%s:%s" % (hostname, serverport))
-    try:
-        webServer.serve_forever()
-    except KeyboardInterrupt:
-        pass
-
-    webServer.server_close()
-    print("Server stopped.")
-    
+    with socketserver.TCPServer(("", port), Handler) as httpd:
+        print(f"serving at port {port}")
+        httpd.serve_forever()
     GPIO.setmode (GPIO.BCM)
     pinlist = [14, 15]
     for pin in pinlist:
