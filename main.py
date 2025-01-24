@@ -5,7 +5,11 @@ import socketserver
 
 hostname = "pitester"
 port = 80
-Handler = http.server.SimpleHTTPRequestHandler
+directory="web"
+
+class Handler(http.server.SimpleHTTPRequestHandler):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, directory=directory, **kwargs)
 
 if __name__ == "__main__":
     with socketserver.TCPServer(("", port), Handler) as httpd:
