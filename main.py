@@ -113,7 +113,7 @@ if __name__ == "__main__":
     # Main loop to update the web page and monitor GPIO pins
     while True:
         # Open the web page index.html for writing the status
-        f = open("web/index.html", "w")
+        f = open("web/iframe.html", "w")
         fl = open("/home/mike/pitest.log", "a")
         f.write(header)
 
@@ -146,6 +146,6 @@ if __name__ == "__main__":
         f.write(footer)
         f.close()
         fl.close()
-        
+
         # Sleep for a short period before checking the pins again
         time.sleep(.1)

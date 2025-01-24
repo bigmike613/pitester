@@ -1,5 +1,14 @@
 <html>
+<script type="text/javascript">
+
+function update() {
+
+
+    document.getElementById('Iframe').src = "iframe.html"
+}
+setInterval(function(){update()}, 1000);
+</script>
 <body>
-<p>Loading....</p>
+<iframe id="Iframe" height="100%" width="100%" src="iframe.html" frameBorder="0" ></iframe>
 </body>
 </html>
