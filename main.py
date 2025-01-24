@@ -82,10 +82,10 @@ if __name__ == "__main__":
             #print(f"pin {pin}")
             if pinstat:
                 f.write(f"<tr id=red><td>")
-                f.write(f"{name}</td><td>{num}</td><td>{pinstat}</td></tr>")
+                f.write(f"{name}</td><td>{num}</td><td>Open</td></tr>")
             else:
                 f.write(f"<tr id=green><td>")
-                f.write(f"{name}</td><td>{num}</td><td>{pinstat}</td></tr>")
+                f.write(f"{name}</td><td>{num}</td><td>Closed</td></tr>")
             #print(pinstat)
         f.write(footer)
         f.close()
