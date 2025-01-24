@@ -21,8 +21,15 @@ p {
 <body>
 
 <h1>PiTESTER</h1>
+<table>
+<tr>
+<th>Name</th>
+<th>pin</th>
+<th>Status</th>
+</tr>
 """
 footer = """
+</table>
 </body>
 </html>
 """
@@ -63,7 +70,8 @@ if __name__ == "__main__":
         for pin in pinlist:
             pinstat = GPIO.input(pin)
             #print(f"pin {pin}")
-            f.write(f"<p> pin {pin} is {pinstat}.")
+            f.write(f"<tr><td>")
+            f.write(f"{pin}</td><td>{pin}</td><td>{pinstat}</td></tr>")
             #print(pinstat)
         f.write(footer)
         f.close()
