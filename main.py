@@ -67,4 +67,4 @@ if __name__ == "__main__":
             print(pinstat)
         f.write(footer)
         f.close()
-        time.sleep(.5)
+        time.sleep(.1)
