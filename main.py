@@ -37,7 +37,7 @@ background-color: green;
 </style>
 <body>
 
-<h1>PiTESTER</h1>
+<h1 align=center>PiTESTER</h1>
 <table style="width:100%">
 <tr>
 <th>Name</th>
