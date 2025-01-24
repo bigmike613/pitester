@@ -3,25 +3,30 @@ import time
 import http.server
 import socketserver
 import _thread as thread
+import signal
+import sys
 
-hostname = "pitester"
 port = 80
 directory="web"
 
 def start_server():
     with socketserver.TCPServer(("", port), Handler) as httpd:
         print(f"serving at port {port}")
-        try:
-            httpd.serve_forever()
-        except KeyboardInterrupt:
-            pass
+        httpd.serve_forever()
+
+def stop_server(signal, frame):
+    print("Stopping the server...")
+    if httpd:
+        httpd.shutdown()
+    GPIO.cleanup()
+    sys.exit(0)
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=directory, **kwargs)
 
 if __name__ == "__main__":
-
+    signal.signal(signal.SIGINT, stop_server)
     thread.start_new_thread(start_server, ())
     GPIO.setmode (GPIO.BCM)
     pinlist = [14, 15]
