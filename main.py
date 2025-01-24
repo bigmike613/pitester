@@ -91,9 +91,11 @@ if __name__ == "__main__":
             if pinstat:
                 f.write(f"<tr id=red><td>")
                 f.write(f"{pin['name']}</td><td>{pin['num']}</td><td>Open</td></tr>")
+                pin['status']=1
             else:
                 f.write(f"<tr id=green><td>")
                 f.write(f"{pin['name']}</td><td>{pin['num']}</td><td>Closed</td></tr>")
+                pin['status']=0
             #print(pinstat)
         f.write(footer)
         f.close()
