@@ -6,7 +6,7 @@ import _thread as thread
 import signal
 import sys
 
-pinlist = [14, 15, 18]
+pinlist = {"heater":14, "trip":15, "trip2":18}
 port = 80
 directory="web"
 httpd = None
@@ -77,15 +77,15 @@ if __name__ == "__main__":
     while True:
         f = open("web/index.html", "w")
         f.write(header)
-        for pin in pinlist:
-            pinstat = GPIO.input(pin)
+        for name, num in pinlist.items():
+            pinstat = GPIO.input(num)
             #print(f"pin {pin}")
             if pinstat:
                 f.write(f"<tr id=red><td>")
-                f.write(f"{pin}</td><td>{pin}</td><td>{pinstat}</td></tr>")
+                f.write(f"{name}</td><td>{num}</td><td>{pinstat}</td></tr>")
             else:
                 f.write(f"<tr id=green><td>")
-                f.write(f"{pin}</td><td>{pin}</td><td>{pinstat}</td></tr>")
+                f.write(f"{name}</td><td>{num}</td><td>{pinstat}</td></tr>")
             #print(pinstat)
         f.write(footer)
         f.close()
