@@ -45,7 +45,7 @@ def stop_server(signal, frame):
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=directory, **kwargs)
-    def log_message(self, format: str, *args: time.Any) -> None:
+    def log_message(self, format, *args) -> None:
         pass
 
 if __name__ == "__main__":
