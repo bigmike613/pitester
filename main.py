@@ -20,6 +20,12 @@ p {
 table, th, td {
   border:1px solid black;
 }
+#red {
+background-color: red;
+}
+#green{
+background-color: green;
+}
 </style>
 <body>
 
@@ -74,7 +80,7 @@ if __name__ == "__main__":
             pinstat = GPIO.input(pin)
             #print(f"pin {pin}")
             f.write(f"<tr><td>")
-            f.write(f"{pin}</td><td>{pin}</td><td>{pinstat}</td></tr>")
+            f.write(f"{pin}</td><td id=red>{pin}</td><td>{pinstat}</td></tr>")
             #print(pinstat)
         f.write(footer)
         f.close()
