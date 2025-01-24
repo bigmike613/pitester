@@ -7,13 +7,19 @@ import signal
 import sys
 
 pinlist = {"Pressure Switch":14, "Rollout 1":15, "Rollout 2":18, "Rollout 3":23, "High Limit":24}
+def createworkinglist(startlist):
+    global workinglist
+    for name, num in startlist.items():
+        workinglist.append({"name":name, "num":num, "pre_status":None, "status":None})
+
+workinglist = []
 port = 80
 directory="web"
 httpd = None
 header = """
 <!DOCTYPE html>
 <html>
-<meta http-equiv="Refresh" content=".5">
+<meta http-equiv="Refresh" content=".8">
 <style>
 p {
   font-size: 50px;
@@ -76,17 +82,19 @@ if __name__ == "__main__":
     x=0
     while True:
         f = open("web/index.html", "w")
+        fl = open("/home/mike/pitest.log", "a")
         f.write(header)
-        for name, num in pinlist.items():
-            pinstat = GPIO.input(num)
-            #print(f"pin {pin}")
+        for pin in workinglist:
+            pinstat = GPIO.input(pin['num'])
+            #print(f"pin {pin['num']}")
+            fl.write(f"")
             if pinstat:
                 f.write(f"<tr id=red><td>")
-                f.write(f"{name}</td><td>{num}</td><td>Open</td></tr>")
+                f.write(f"{pin['name']}</td><td>{pin['num']}</td><td>Open</td></tr>")
             else:
                 f.write(f"<tr id=green><td>")
-                f.write(f"{name}</td><td>{num}</td><td>Closed</td></tr>")
+                f.write(f"{pin['name']}</td><td>{pin['num']}</td><td>Closed</td></tr>")
             #print(pinstat)
         f.write(footer)
         f.close()
-        time.sleep(.1)
+        time.sleep(1)
