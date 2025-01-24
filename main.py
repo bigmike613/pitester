@@ -12,6 +12,7 @@ httpd = None
 header = """
 <!DOCTYPE html>
 <html>
+<meta http-equiv="Refresh" content="1">
 <body>
 
 <h1>PiTESTER</h1>
