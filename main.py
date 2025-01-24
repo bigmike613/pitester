@@ -8,4 +8,4 @@ while x < 300:
     print("test")
     print(GPIO.input(14))
     x+=1
-    time.sleep(1)
+    time.sleep(.5)
