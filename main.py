@@ -10,6 +10,9 @@ import sys
 # Edit this list to add or remove pins to be monitored (using GPIO pin numbers)
 pinlist = {"Pressure Switch":14, "Rollout 1":15, "Rollout 2":18, "Rollout 3":23, "High Limit":24}
 
+# Log file location
+logfile = "/home/mike/pitest.log"
+
 # Function to create a working list from the pinlist. This prepares a list of pins to monitor.
 def createworkinglist(startlist):
     global workinglist
@@ -78,7 +81,7 @@ def stop_server(signal, frame):
     if httpd:
         httpd.shutdown() # Shutdown the HTTP server gracefully
     # Add ending statement to log file
-    fl = open("/home/mike/pitest.log", "a")
+    fl = open(logfile, "a")
     now = datetime.datetime.now()
     fl.write(f"\n")
     fl.write(f"{now} - Application Stopped\n")
@@ -106,7 +109,7 @@ if __name__ == "__main__":
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     # Log the start of the application
-    fl = open("/home/mike/pitest.log", "a")
+    fl = open(logfile, "a")
     now = datetime.datetime.now()
     fl.write(f"\n")
     fl.write(f"{now} - Application Started\n")
@@ -117,7 +120,7 @@ if __name__ == "__main__":
     while True:
         # Open the web page index.html for writing the status
         f = open("web/iframe.html", "w")
-        fl = open("/home/mike/pitest.log", "a")
+        fl = open(logfile, "a")
         f.write(header)
 
         # Iterate over the working list to check the status of each pin
