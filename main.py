@@ -24,7 +24,7 @@ table, th, td {
 <body>
 
 <h1>PiTESTER</h1>
-<table>
+<table style="width:100%">
 <tr>
 <th>Name</th>
 <th>Pin</th>
