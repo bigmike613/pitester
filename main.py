@@ -99,4 +99,6 @@ if __name__ == "__main__":
             #print(pinstat)
         f.write(footer)
         f.close()
+        print(workinglist[0]['name'])
+        print(workinglist[0]['status'])
         time.sleep(1)
