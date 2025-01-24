@@ -6,7 +6,7 @@ import _thread as thread
 import signal
 import sys
 
-pinlist = {"heater":14, "trip":15, "trip2":18}
+pinlist = {"Pressure Switch":14, "Rollout 1":15, "Rollout 2":18, "Rollout 3":23, "High Limit":24}
 port = 80
 directory="web"
 httpd = None
