@@ -8,13 +8,16 @@ import sys
 
 port = 80
 directory="web"
+httpd = None
 
 def start_server():
+    global httpd
     with socketserver.TCPServer(("", port), Handler) as httpd:
         print(f"serving at port {port}")
         httpd.serve_forever()
 
 def stop_server(signal, frame):
+    global httpd
     print("Stopping the server...")
     if httpd:
         httpd.shutdown()
