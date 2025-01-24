@@ -99,7 +99,7 @@ if __name__ == "__main__":
             #print(pinstat)
             if pin['pre_status'] != None:
                 if pin['pre_status'] != pin['status']:
-                    fl.write(f"{pin['name']} on pin {pin['num']} changed state from {pin['pre_status']} to {pin['status']}")
+                    fl.write(f"{pin['name']} on pin {pin['num']} changed state from {pin['pre_status']} to {pin['status']}\n")
             pin['pre_status']=pinstat
         f.write(footer)
         f.close()
