@@ -13,6 +13,11 @@ header = """
 <!DOCTYPE html>
 <html>
 <meta http-equiv="Refresh" content="1">
+<style>
+p {
+  font-size: 50px;
+}
+</style>
 <body>
 
 <h1>PiTESTER</h1>
