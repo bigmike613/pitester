@@ -28,7 +28,6 @@ httpd = None
 header = """
 <!DOCTYPE html>
 <html>
-<meta http-equiv="Refresh" content=".8">
 <style>
 p {
   font-size: 50px;
