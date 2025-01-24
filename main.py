@@ -2,19 +2,23 @@ import RPi.GPIO as GPIO
 import time
 import http.server
 import socketserver
+import _thread as thread
 
 hostname = "pitester"
 port = 80
 directory="web"
+
+def start_server():
+    with socketserver.TCPServer(("", port), Handler) as httpd:
+        print(f"serving at port {port}")
+        httpd.serve_forever()
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=directory, **kwargs)
 
 if __name__ == "__main__":
-    with socketserver.TCPServer(("", port), Handler) as httpd:
-        print(f"serving at port {port}")
-        httpd.serve_forever()
+    thread.start_new_thread(start_server, ())
     GPIO.setmode (GPIO.BCM)
     pinlist = [14, 15]
     for pin in pinlist:
