@@ -12,7 +12,7 @@ httpd = None
 header = """
 <!DOCTYPE html>
 <html>
-<meta http-equiv="Refresh" content="1">
+<meta http-equiv="Refresh" content=".5">
 <style>
 p {
   font-size: 50px;
@@ -45,6 +45,8 @@ def stop_server(signal, frame):
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=directory, **kwargs)
+    def log_message(self, format: str, *args: time.Any) -> None:
+        pass
 
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, stop_server)
