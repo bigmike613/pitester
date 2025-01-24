@@ -75,7 +75,7 @@ if __name__ == "__main__":
     signal.signal(signal.SIGINT, stop_server)
     thread.start_new_thread(start_server, ())
     GPIO.setmode (GPIO.BCM)
-    
+    createworkinglist(pinlist)
     for pin in pinlist.values():
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
