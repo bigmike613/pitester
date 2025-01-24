@@ -79,8 +79,12 @@ if __name__ == "__main__":
         for pin in pinlist:
             pinstat = GPIO.input(pin)
             #print(f"pin {pin}")
-            f.write(f"<tr><td>")
-            f.write(f"{pin}</td><td id=red>{pin}</td><td>{pinstat}</td></tr>")
+            if pinstat:
+                f.write(f"<tr id=red><td>")
+                f.write(f"{pin}</td><td>{pin}</td><td>{pinstat}</td></tr>")
+            else:
+                f.write(f"<tr id=green><td>")
+                f.write(f"{pin}</td><td>{pin}</td><td>{pinstat}</td></tr>")
             #print(pinstat)
         f.write(footer)
         f.close()
