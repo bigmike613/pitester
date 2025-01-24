@@ -38,8 +38,11 @@ if __name__ == "__main__":
 
     x=0
     while x < 300:
+        f = open("web/index.html", "w")
+        f.write("TESTING123...")
         for pin in pinlist:
             print(f"pin {pin}")
             print(GPIO.input(pin))
+        f.close()
         x+=1
         time.sleep(.5)
