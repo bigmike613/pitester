@@ -62,9 +62,9 @@ if __name__ == "__main__":
         f.write(header)
         for pin in pinlist:
             pinstat = GPIO.input(pin)
-            print(f"pin {pin}")
+            #print(f"pin {pin}")
             f.write(f"<p> pin {pin} is {pinstat}.")
-            print(pinstat)
+            #print(pinstat)
         f.write(footer)
         f.close()
         time.sleep(.1)
