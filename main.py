@@ -11,13 +11,17 @@ directory="web"
 def start_server():
     with socketserver.TCPServer(("", port), Handler) as httpd:
         print(f"serving at port {port}")
-        httpd.serve_forever()
+        try:
+            httpd.serve_forever()
+        except KeyboardInterrupt:
+            pass
 
 class Handler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=directory, **kwargs)
 
 if __name__ == "__main__":
+
     thread.start_new_thread(start_server, ())
     GPIO.setmode (GPIO.BCM)
     pinlist = [14, 15]
