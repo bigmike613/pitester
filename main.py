@@ -70,8 +70,8 @@ if __name__ == "__main__":
     thread.start_new_thread(start_server, ())
     GPIO.setmode (GPIO.BCM)
     
-    for pin in pinlist:
-        GPIO.setup(pin.num, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    for pin in pinlist.values:
+        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     x=0
     while True:
