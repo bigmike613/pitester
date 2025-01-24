@@ -9,8 +9,20 @@ import sys
 port = 80
 directory="web"
 httpd = None
+header = """
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>PiTESTER</h1>
+"""
+footer = """
+</body>
+</html>
+"""
 
 def start_server():
+
     global httpd
     with socketserver.TCPServer(("", port), Handler) as httpd:
         print(f"serving at port {port}")
@@ -37,12 +49,14 @@ if __name__ == "__main__":
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     x=0
-    while x < 300:
+    while True:
         f = open("web/index.html", "w")
-        f.write("TESTING123...")
+        f.write(header)
         for pin in pinlist:
+            pinstat = GPIO.input(pin)
             print(f"pin {pin}")
-            print(GPIO.input(pin))
+            f.write(f"<p> pin {pin} is {pinstat}.")
+            print(pinstat)
+        f.write(footer)
         f.close()
-        x+=1
         time.sleep(.5)
