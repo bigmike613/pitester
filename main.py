@@ -103,4 +103,4 @@ if __name__ == "__main__":
             pin['pre_status']=pinstat
         f.write(footer)
         f.close()
-        #time.sleep(.1)
+        time.sleep(.1)
