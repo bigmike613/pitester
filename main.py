@@ -97,8 +97,9 @@ if __name__ == "__main__":
                 f.write(f"{pin['name']}</td><td>{pin['num']}</td><td>Closed</td></tr>")
                 pin['status']=0
             #print(pinstat)
-            if pin['pre_status'] != pin['status']:
-                print("A CHANGE OCCURED")
+            if pin['pre_status'] != None:
+                if pin['pre_status'] != pin['status']:
+                    print("A CHANGE OCCURED")
             pin['pre_status']=pinstat
         f.write(footer)
         f.close()
