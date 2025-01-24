@@ -17,6 +17,9 @@ header = """
 p {
   font-size: 50px;
 }
+table, th, td {
+  border:1px solid black;
+}
 </style>
 <body>
 
@@ -24,7 +27,7 @@ p {
 <table>
 <tr>
 <th>Name</th>
-<th>pin</th>
+<th>Pin</th>
 <th>Status</th>
 </tr>
 """
