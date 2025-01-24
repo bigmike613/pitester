@@ -71,7 +71,7 @@ if __name__ == "__main__":
     GPIO.setmode (GPIO.BCM)
     
     for pin in pinlist:
-        GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+        GPIO.setup(pin.num, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     x=0
     while True:
