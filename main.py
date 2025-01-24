@@ -35,6 +35,10 @@ p {
 table, th, td {
   border:1px solid black;
 }
+table {
+width:calc(100vw - 50px);
+height: calc(100vh - 50px);
+}
 #red {
 background-color: red;
 }
