@@ -63,6 +63,12 @@ def stop_server(signal, frame):
     print("Stopping the server...")
     if httpd:
         httpd.shutdown()
+    fl = open("/home/mike/pitest.log", "a")
+    now = datetime.datetime.now()
+    fl.write(f"\n")
+    fl.write(f"{now} - Application Stopped\n")
+    fl.write(f"\n")
+    fl.close()
     GPIO.cleanup()
     sys.exit(0)
 
@@ -80,7 +86,12 @@ if __name__ == "__main__":
     for pin in pinlist.values():
         GPIO.setup(pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-    x=0
+    fl = open("/home/mike/pitest.log", "a")
+    now = datetime.datetime.now()
+    fl.write(f"\n")
+    fl.write(f"{now} - Application Started\n")
+    fl.write(f"\n")
+    fl.close()
     while True:
         f = open("web/index.html", "w")
         fl = open("/home/mike/pitest.log", "a")
