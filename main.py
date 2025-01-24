@@ -100,6 +100,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 # Main program execution starts here
 if __name__ == "__main__":
     signal.signal(signal.SIGINT, stop_server)  # Handle SIGINT (Ctrl+C) to stop the server
+    signal.signal(signal.SIGTERM, stop_server)  # Handle SIGTERM to stop the server
     thread.start_new_thread(start_server, ())  # Start the HTTP server in a new thread
     GPIO.setmode (GPIO.BCM) # Set the GPIO pin numbering mode to BCM (Broadcom)
     createworkinglist(pinlist) # Initialize the working list from the pinlist
